@@ -1,0 +1,8 @@
+.root {
+  @apply w-screen h-screen;
+}
+
+.root__content {
+  width: calc(100% - var(--header-width));
+  padding-left: var(--header-width);
+}

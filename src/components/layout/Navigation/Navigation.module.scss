@@ -1,0 +1,30 @@
+.root {
+  width: var(--header-width);
+
+  @apply border-r border-[#E6E6E6] h-full absolute top-0 left-0 flex flex-col justify-center items-center py-10;
+
+  > svg {
+    @apply absolute top-10 left-1/2 translate-x-[-50%];
+  }
+}
+
+.root__items {
+  @apply flex flex-col gap-9;
+}
+
+.root__item {
+  color: #000;
+
+  > svg {
+    width: 31px;
+    color: rgba(117, 117, 117, 1);
+  }
+}
+
+.active {
+  pointer-events: none;
+
+  svg {
+    color: rgba(41, 41, 41, 1);
+  }
+}
