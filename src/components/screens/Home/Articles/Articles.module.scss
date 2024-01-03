@@ -1,0 +1,55 @@
+.root {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.root__articles {
+  @apply font-roboto pt-10 font-normal;
+}
+
+.root__article {
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.root__articleInfo {
+  @apply flex items-center gap-2 justify-items-center leading-none mb-3;
+}
+
+.root__articleInfoSeparator {
+  @apply inline-block w-[1.5px] h-[1.5px] bg-text-gray;
+
+  border-radius: 100%;
+}
+
+.root__articleAuthor {
+  @apply flex items-center font-light gap-1 justify-center;
+
+  > svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.root__articleCreatedAt {
+  @apply text-sm font-light text-text-gray;
+}
+
+.root__articleTitle {
+  @apply text-text-primary text-2xl leading-7 mb-3;
+
+  letter-spacing: .3px;
+}
+
+.root__articleDescription {
+  @apply text-text-gray font-light leading-5 mb-6;
+
+  font-size: 16px;
+}
+
+.root__articleExtend {
+  @apply px-2 py-1 mb-5 font-light inline-block text-text-black;
+
+  border-radius: 10px;
+  font-size: 13px;
+  background: #F2F2F2;
+}

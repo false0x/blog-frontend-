@@ -1,0 +1,1 @@
+export const getAdminUrl = (path: string) => `/manage${path}`

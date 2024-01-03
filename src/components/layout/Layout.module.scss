@@ -4,5 +4,6 @@
 
 .root__content {
   width: calc(100% - var(--header-width));
-  padding-left: var(--header-width);
+  margin-left: var(--header-width);
+  height: 100%;
 }

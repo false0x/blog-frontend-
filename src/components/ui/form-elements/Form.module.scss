@@ -1,0 +1,13 @@
+.rootFormInputLabel {
+  > input {
+    @apply outline-none border-none p-4 rounded-xl w-full;
+
+    font-size: 15px;
+  }
+}
+
+.root__fieldError {
+  font-size: 14px;
+  color: #dc2424;
+  letter-spacing: .4px;
+}

@@ -16,6 +16,7 @@
   color: #000;
 
   > svg {
+    transition: color .4s;
     width: 31px;
     color: rgba(117, 117, 117, 1);
   }
