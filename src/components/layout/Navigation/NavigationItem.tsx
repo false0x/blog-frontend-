@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 const NavigationItem: FC<NavigationItemType> = ({ path, Image }) => {
     const router = useRouter()
-    const isActive = router.pathname === path
+    const isActive = router.pathname.startsWith(path) && (router.pathname.length === path.length || router.pathname[path.length] === '/')
 
     return (
         <Link href={path} key={path} className={cn({

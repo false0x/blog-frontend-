@@ -5,9 +5,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
 body, html {
-  @apply w-full h-full;
+  @apply w-full h-full overflow-x-hidden;
 }
 
 :root {
   --header-width: 100px;
+}
+
+.DraftEditor-editorContainer {
+  @apply relative py-3 text-xl text-text-gray;
+
+  z-index: 1;
 }

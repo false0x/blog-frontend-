@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IInitialState } from "./admin.interface";
-import { login } from "./admin.actions";
+import { checkAuth, login } from './admin.actions'
 import { getStoreLocal } from '@/src/utils/local-storage'
 
 const initialState: IInitialState = {
@@ -20,6 +20,8 @@ export const adminSlice = createSlice({
             state.isLoggedIn = true
         }).addCase(login.rejected, state => {
             state.isLoading = false
+        }).addCase(checkAuth.rejected, state => {
+            state.isLoggedIn = false
         })
     }
 })

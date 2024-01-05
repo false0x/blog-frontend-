@@ -1,10 +1,22 @@
 .root {
-  max-width: 700px;
+  @apply py-5;
+
+  max-width: 800px;
   margin: 0 auto;
 }
 
+.root__actions {
+
+  > button {
+    @apply bg-text-black p-3 rounded-xl font-light outline-none mb-7;
+
+    font-size: 14px;
+    color: #fff;
+  }
+}
+
 .root__articles {
-  @apply font-roboto pt-10 font-normal;
+  @apply font-roboto font-normal flex flex-col gap-8;
 }
 
 .root__article {
@@ -44,4 +56,8 @@
   @apply text-text-gray font-light leading-5 mb-5;
 
   font-size: 16px;
+}
+
+.root__articleEdit, .root__articleDelete {
+  @apply text-sm font-light text-text-gray cursor-pointer;
 }

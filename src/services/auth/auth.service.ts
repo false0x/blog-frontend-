@@ -3,8 +3,6 @@ import Router from 'next/router'
 import { axiosAuth, axiosClassic } from '@/src/api/api.interceptor'
 import { IAuthResponse } from '@/src/store/admin/admin.interface'
 import { getAuthUrl } from '@/src/config/api.config'
-import Cookies from 'js-cookie'
-import { getContentType } from '@/src/api/api.helper'
 
 
 export const AuthService = {

@@ -30,9 +30,13 @@ const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
                 <Toastify />
-                <AuthProvider Component={Component}>
-                    <Layout>{children}</Layout>
-                </AuthProvider>
+
+                <Layout>
+                    <AuthProvider Component={Component}>
+                        {children}
+                    </AuthProvider>
+                </Layout>
+
             </QueryClientProvider>
         </Provider>
     )

@@ -39,7 +39,7 @@ export const checkAuth = createAsyncThunk<IAuthResponse>(
 
             return response.data;
         } catch (error) {
-            if (errorCatch(error) === "Invalid refresh token") {
+            if (errorCatch(error) === "Unauthorized") {
                 await AuthService.logout();
 
                 await toast.error("Session time has expired. Please log in again.");

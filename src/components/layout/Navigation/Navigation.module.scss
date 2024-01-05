@@ -1,7 +1,7 @@
 .root {
   width: var(--header-width);
 
-  @apply border-r border-[#E6E6E6] h-full absolute top-0 left-0 flex flex-col justify-center items-center py-10;
+  @apply border-r border-[#E6E6E6] h-full fixed top-0 left-0 flex flex-col justify-center items-center py-10;
 
   > svg {
     @apply absolute top-10 left-1/2 translate-x-[-50%];

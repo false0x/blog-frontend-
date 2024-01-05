@@ -1,0 +1,47 @@
+.root {
+  @apply pt-8 px-4 pb-8;
+
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.root__titleInput {
+  @apply w-full;
+
+  > div {
+    max-height: 50px;
+  }
+
+  label {
+    @apply block;
+
+    > input {
+      @apply text-2xl py-1 px-0;
+    }
+  }
+}
+
+.root__contentInput {
+  @apply mt-2 relative;
+}
+
+.root__contentInputPlaceholder {
+  @apply absolute top-1/2 left-0 text-text-gray;
+
+  transform: translateY(-50%);
+}
+
+.root__bottomActions {
+  @apply flex items-center gap-3 leading-none mt-3;
+
+  > span {
+    @apply font-light text-text-gray text-sm cursor-pointer;
+  }
+}
+
+.root__submitButton {
+  @apply bg-text-black p-3 rounded-xl font-light outline-none;
+
+  font-size: 14px;
+  color: #fff;
+}

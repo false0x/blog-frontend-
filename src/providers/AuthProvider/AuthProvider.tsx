@@ -31,9 +31,7 @@ const AuthProvider: FC<TypeComponentAuthFields> = ({
     if (!accessToken && isLoggedIn) logout(false)
   }, [pathname])
 
-  if (!isOnlyAdmin) {
-    return <>{children}</>
-  }
+  if (!isOnlyAdmin) return <>{children}</>
 
   return <DynamicCheckRole Component={{ isOnlyAdmin }}>{children}</DynamicCheckRole>
 }

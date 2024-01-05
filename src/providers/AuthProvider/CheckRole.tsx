@@ -17,7 +17,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({
     return null
   }
 
-  return <>{children}</>
+  if (!isLoggedIn) return <>{children}</>
 }
 
 export default CheckRole

@@ -1,6 +1,8 @@
+import Manage from '@/src/components/screens/Manage/Manage'
+
 export const ManagePage = () => {
     return (
-        <>manage</>
+        <Manage />
     )
 }
 

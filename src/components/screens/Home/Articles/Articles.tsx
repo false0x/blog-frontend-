@@ -28,12 +28,6 @@ const Articles: FC = () => {
                     <div className={s.root__articleDescription}>
                         An intense way to learn about the process and practice your designs skills — My 1st hackathon Hackathons have been on my mind since I heard it was a good way to gain experience as a junior UX designer. As my portfolio...
                     </div>
-
-                    <div className={s.root__articleExtend}>
-                        <div className={s.root__articleExtendRead}>
-                            3 min read
-                        </div>
-                    </div>
                 </article>
             </div>
         </div>

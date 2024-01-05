@@ -15,5 +15,6 @@ module.exports = {
       roboto: ['Roboto', 'sans-serif']
     },
   },
+  important: true,
   plugins: [],
 }
