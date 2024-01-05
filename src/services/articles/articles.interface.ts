@@ -1,7 +1,9 @@
+import { RawDraftContentState } from 'draft-js'
+
 export interface IArticle {
     id: number
     title: string
-    content: string
+    content: RawDraftContentState
     shortContent: string
     createdAt: Date
     updatedAt: Date
@@ -18,5 +20,9 @@ export interface Comment {
 export interface IArticleCreate {
     content: string
     shortContent: string
+    title: string
+}
+
+export interface IArticleUpdate {
     title: string
 }

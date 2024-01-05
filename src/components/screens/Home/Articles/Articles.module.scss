@@ -45,3 +45,14 @@
 
   font-size: 16px;
 }
+
+.root__articlesEmpty {
+  @apply absolute text-xl;
+
+  left: calc(50% - var(--header-width));
+  transform: translateX(50%);
+}
+
+.root__articleComments {
+  @apply text-sm font-light text-text-gray;
+}

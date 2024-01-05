@@ -2,18 +2,16 @@ import { FC, useState } from 'react'
 import s from './CreateArticle.module.scss'
 import { convertToRaw, Editor, EditorState } from 'draft-js'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ICreateArticle } from '@/src/components/screens/Manage/CreateArticle/create-article.interface'
 import CreateArticleFields from '@/src/components/screens/Manage/CreateArticle/CreateArticleFields'
 import Button from '@/src/components/ui/form-elements/Button'
 import { limitText } from '@/src/utils/limit-text'
-import { toastError } from '@/src/utils/toast-error'
 import { toast } from 'react-toastify'
 import { useMutation } from 'react-query'
-import { useArticles } from '@/src/components/screens/Manage/useArticles'
 import { ArticlesService } from '@/src/services/articles/articles.service'
-import { IArticleCreate } from '@/src/services/articles/articles.interface'
+import { IArticleCreate, IArticleUpdate } from '@/src/services/articles/articles.interface'
 import { useRouter } from 'next/router'
 import { getAdminUrl } from '@/src/config/url.config'
+import { errorCatch } from '@/src/api/api.helper'
 
 const CreateArticle: FC = () => {
     const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true)
@@ -31,7 +29,7 @@ const CreateArticle: FC = () => {
                 toast.success(`Article successfully created ✅`)
             },
             onError(error) {
-                toast.error(`Error: ${error} ❌`)
+                toast.error(`Error: ${errorCatch(error)} ❌`)
             },
         },
     )
@@ -40,11 +38,11 @@ const CreateArticle: FC = () => {
         setEditorState(newState)
     }
 
-    const { register, handleSubmit, formState } = useForm<ICreateArticle>({
+    const { register, handleSubmit, formState } = useForm<IArticleUpdate>({
         mode: 'onChange',
     })
 
-    const onSubmit: SubmitHandler<ICreateArticle> = async (data) => {
+    const onSubmit: SubmitHandler<IArticleUpdate> = async (data) => {
         if (limitText(editorState.getCurrentContent().getPlainText()).length === 0) {
             return toast.error('The "Your story..." field cannot be empty')
         }

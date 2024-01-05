@@ -1,16 +1,41 @@
 import { FC } from 'react'
 import s from './Manage.module.scss'
 import AdminImage from '@/public/articles/admin.svg'
-import { useArticles } from '@/src/components/screens/Manage/useArticles'
+import { useArticles } from '@/src/components/screens/Home/Articles/useArticles'
 import Moment from 'react-moment';
 import { useRouter } from 'next/router'
 import { getAdminArticleUrl } from '@/src/config/url.config'
+import { useMutation } from 'react-query'
+import { IArticleCreate } from '@/src/services/articles/articles.interface'
+import { ArticlesService } from '@/src/services/articles/articles.service'
+import { toast } from 'react-toastify'
+import { errorCatch } from '@/src/api/api.helper'
 
 const Manage: FC = () => {
     const router = useRouter()
-    const { data } = useArticles()
+    const { data, refetch } = useArticles()
+
+    const { isLoading, mutateAsync } = useMutation(
+        'delete article',
+        (id: number) => ArticlesService.delete(id),
+        {
+            onSuccess: async () => {
+                toast.success(`Article successfully deleted ✅`)
+
+                await refetch()
+            },
+            onError(error) {
+                toast.error(`Error: ${errorCatch(error)} ❌`)
+            },
+        },
+    )
+
+    const handleDelete = async (id: number) => {
+        await mutateAsync(id)
+    }
 
     const handleCreateButton = () => router.push(getAdminArticleUrl('/create'))
+    const handleEditButton = (id: number) => router.push(getAdminArticleUrl(`/edit/${id}`))
 
     return (
         <div className={s.root}>
@@ -45,15 +70,15 @@ const Manage: FC = () => {
                             </div>
 
                             <div className={s.root__articleInfo}>
-                                <div className={s.root__articleEdit}>
+                                <div onClick={() => handleEditButton(article.id)} className={s.root__articleEdit}>
                                     Edit
                                 </div>
 
                                 <span className={s.root__articleInfoSeparator}></span>
 
-                                <div className={s.root__articleDelete}>
+                                <button onClick={() => handleDelete(article.id)} disabled={isLoading} className={s.root__articleDelete}>
                                     Delete
-                                </div>
+                                </button>
                             </div>
                         </article>
                     ))
