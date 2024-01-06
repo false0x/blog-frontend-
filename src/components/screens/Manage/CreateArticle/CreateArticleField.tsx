@@ -1,23 +1,23 @@
 import { FC } from 'react'
 import { FormState, UseFormRegister } from 'react-hook-form'
-import { IAuthInput } from '@/src/components/screens/Auth/auth.interface'
 import Field from '@/src/components/ui/form-elements/Field'
 import s from './CreateArticle.module.scss'
-import { ICreateArticle } from '@/src/components/screens/Manage/CreateArticle/create-article.interface'
+import { IArticleCreate } from '@/src/services/article/article.interface'
 
 
-interface ICreateArticleFields {
+interface ICreateArticleField {
     register: UseFormRegister<any>
-    formState: FormState<ICreateArticle>
+    formState: FormState<IArticleCreate>
 }
 
-const CreateArticleFields: FC<ICreateArticleFields> = ({ register, formState: { errors } }) => {
+const CreateArticleField: FC<ICreateArticleField> = ({ register, formState: { errors } }) => {
     return (
         <>
             <div className={s.root__titleInput}>
                 <Field
                     {...register("title", {
-                        required: "The field is required"
+                        required: "The field is required",
+                        minLength: 1
                     })}
                     placeholder='Title'
                     error={errors.title}
@@ -28,4 +28,4 @@ const CreateArticleFields: FC<ICreateArticleFields> = ({ register, formState: { 
     );
 };
 
-export default CreateArticleFields;
+export default CreateArticleField;

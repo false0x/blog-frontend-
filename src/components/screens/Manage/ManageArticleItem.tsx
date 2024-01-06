@@ -2,11 +2,11 @@ import { FC } from 'react'
 import s from './Manage.module.scss'
 import AdminImage from '@/public/articles/admin.svg'
 import Moment from 'react-moment'
-import { IArticle } from '@/src/services/articles/articles.interface'
+import { IArticle } from '@/src/services/article/article.interface'
 import { getAdminArticleUrl } from '@/src/config/url.config'
 import { useRouter } from 'next/router'
 import { useMutation } from 'react-query'
-import { ArticlesService } from '@/src/services/articles/articles.service'
+import { ArticleService } from '@/src/services/article/article.service'
 import { toast } from 'react-toastify'
 import { errorCatch } from '@/src/api/api.helper'
 import { useArticles } from '@/src/components/screens/Home/Articles/useArticles'
@@ -20,7 +20,7 @@ const ManageArticleItem: FC<IArticle> = (article) => {
 
     const { isLoading, mutateAsync } = useMutation(
         'delete article',
-        (id: number) => ArticlesService.delete(id),
+        (id: number) => ArticleService.delete(id),
         {
             onSuccess: async () => {
                 toast.success(`Article successfully deleted ✅`)

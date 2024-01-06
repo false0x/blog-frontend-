@@ -4,8 +4,7 @@ import Cookies from 'js-cookie'
 import { errorCatch, getContentType } from './api.helper'
 import { toast } from 'react-toastify'
 import { AuthService } from '@/src/services/auth/auth.service'
-import { logout } from '@/src/store/admin/admin.actions'
-import { router } from 'next/client'
+import { toastError } from '@/src/utils/toast-error'
 
 export const axiosClassic = axios.create({
     baseURL: API_URL,

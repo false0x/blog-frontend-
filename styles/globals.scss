@@ -12,6 +12,12 @@ body, html {
   --header-width: 100px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --header-width: 70px;
+  }
+}
+
 .DraftEditor-editorContainer {
   @apply relative py-3 text-xl text-text-gray;
 

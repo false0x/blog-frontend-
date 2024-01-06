@@ -1,9 +1,9 @@
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import { IArticleCreate } from '@/src/services/articles/articles.interface'
+import { IArticleCreate } from '@/src/services/article/article.interface'
 import { useMutation, useQuery } from 'react-query'
 import { getAdminUrl } from '@/src/config/url.config'
-import { ArticlesService } from '@/src/services/articles/articles.service'
+import { ArticleService } from '@/src/services/article/article.service'
 import { toastError } from '@/src/utils/toast-error'
 import { toast } from 'react-toastify'
 import { AxiosError } from 'axios'
@@ -14,7 +14,7 @@ export const useArticleEdit = (setValue: UseFormSetValue<IArticleCreate>) => {
     const articleId = Number(query.id)
 
     const { isLoading, data } = useQuery(['get article', articleId], () =>
-            ArticlesService.get(articleId),
+            ArticleService.get(articleId),
         {
             onSuccess: ({ data }) => {
                 setValue('title', data.title)
@@ -30,7 +30,7 @@ export const useArticleEdit = (setValue: UseFormSetValue<IArticleCreate>) => {
 
     const { mutateAsync } = useMutation(
         'update article',
-        (data: IArticleCreate) => ArticlesService.update(data, articleId),
+        (data: IArticleCreate) => ArticleService.update(data, articleId),
         {
             onError: (error: AxiosError) => {
                 if (error.response?.status === 304) {

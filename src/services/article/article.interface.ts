@@ -1,4 +1,5 @@
 import { RawDraftContentState } from 'draft-js'
+import { IComment } from '@/src/services/comment/comment.interface'
 
 export interface IArticle {
     id: number
@@ -7,14 +8,7 @@ export interface IArticle {
     shortContent: string
     createdAt: Date
     updatedAt: Date
-    comments: Comment[]
-}
-
-export interface Comment {
-    id: number
-    text: string
-    createdAt: string
-    articleId: number
+    comments: IComment[]
 }
 
 export interface IArticleCreate {

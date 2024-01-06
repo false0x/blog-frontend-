@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from 'react-query'
 import { AxiosResponse } from 'axios'
-import { IArticleResponse } from '@/src/services/articles/articles.interface'
+import { IArticleResponse } from '@/src/services/article/article.interface'
 import s from './Pagination.module.scss'
 
 interface IPagination {
@@ -18,7 +18,7 @@ const Pagination: FC<IPagination> = ({ refetch, data, currPage, setCurrPage, tot
     const handlePreviousClick = () => {
         const newPage = Math.max(currPage - 1, 1)
 
-        refetch({ queryKey: ['get all articles', newPage] })
+        refetch({ queryKey: ['get all article', newPage] })
 
         setCurrPage(newPage)
     }
@@ -26,7 +26,7 @@ const Pagination: FC<IPagination> = ({ refetch, data, currPage, setCurrPage, tot
     const handleNextClick = () => {
         const newPage = Math.min(currPage + 1, totalPages)
 
-        refetch({ queryKey: ['get all articles', newPage] })
+        refetch({ queryKey: ['get all article', newPage] })
 
         setCurrPage(newPage)
     }

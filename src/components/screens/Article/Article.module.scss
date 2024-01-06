@@ -1,0 +1,61 @@
+.root {
+  @apply pt-5 pb-5;
+
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.root__title {
+  @apply text-text-black text-3xl mb-3;
+}
+
+.root__commentSection {
+  @apply mt-8;
+}
+
+.root__commentForm {
+  @apply flex flex-col gap-3 pb-8;
+
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.root__commentTextarea {
+  @apply w-full resize-none outline-none p-3 bg-text-gray bg-opacity-5 rounded-3xl text-center font-roboto text-text-gray font-light;
+}
+
+.root__commentButton {
+  @apply px-5 py-3 bg-text-black rounded-2xl font-roboto text-text-gray font-light text-sm;
+
+  max-width: 200px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.root__comments {
+  @apply flex flex-col gap-2;
+
+  max-width: 500px;
+  margin: 0 auto;
+  flex-flow: column wrap;
+}
+
+.root__comment {
+  @apply rounded-xl p-5 w-full text-center relative;
+
+  background: rgba(0, 0, 0, 1);
+  word-wrap: break-word;
+  color: #d0d0d0;
+  flex: 1 1 auto;
+
+  > span {
+    @apply font-light font-roboto absolute top-1 left-2;
+
+    color: #fff;
+    font-size: 10px;
+  }
+
+  > div {
+    font-size: 13px;
+  }
+}

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import s from './Articles.module.scss'
 import AdminImage from '@/public/articles/admin.svg'
-import { IArticle } from '@/src/services/articles/articles.interface'
+import { IArticle } from '@/src/services/article/article.interface'
 import Moment from 'react-moment'
 import { useRouter } from 'next/router'
 import { getArticleUrl } from '@/src/config/url.config'
