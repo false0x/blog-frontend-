@@ -1,0 +1,11 @@
+.root {
+  @apply flex items-center justify-center mb-8 gap-5 mt-8;
+
+  > span {
+    @apply text-sm text-text-gray;
+  }
+
+  > button {
+    @apply text-sm text-text-black;
+  }
+}

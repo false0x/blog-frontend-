@@ -9,39 +9,43 @@ import { toast } from 'react-toastify'
 import { AxiosError } from 'axios'
 
 export const useArticleEdit = (setValue: UseFormSetValue<IArticleCreate>) => {
-    const {push, query} = useRouter()
+    const { push, query } = useRouter()
 
     const articleId = Number(query.id)
 
     const { isLoading, data } = useQuery(['get article', articleId], () =>
-        ArticlesService.get(articleId), {
-        onSuccess: ({ data }) => {
-            setValue('title', data.title)
+            ArticlesService.get(articleId),
+        {
+            onSuccess: ({ data }) => {
+                setValue('title', data.title)
+            },
+            onError: (error) => {
+                push(getAdminUrl())
+
+                toastError(error)
+            },
+            enabled: !!articleId,
         },
-        onError: (error) => {
-            push(getAdminUrl())
+    )
 
-            toastError(error)
+    const { mutateAsync } = useMutation(
+        'update article',
+        (data: IArticleCreate) => ArticlesService.update(data, articleId),
+        {
+            onError: (error: AxiosError) => {
+                if (error.response?.status === 304) {
+                    toast.error('You haven\'t made any changes.')
+                    return
+                }
+
+                toastError(error)
+            },
+            onSuccess: () => {
+                toast.success(`Article successfully updated ✅`)
+                push(getAdminUrl())
+            },
         },
-        enabled: !!articleId
-    })
-
-    const { mutateAsync } = useMutation('update article', (data: IArticleCreate) => ArticlesService.update(data, articleId), {
-        onError: (error: AxiosError) => {
-            if (error.response?.status == 304) {
-                toast.error('You haven\'t made any changes.')
-
-                return
-            }
-
-            toastError(error)
-        },
-        onSuccess: () => {
-            toast.success(`Article successfully updated ✅`)
-
-            push(getAdminUrl())
-        },
-    })
+    )
 
     const onSubmit: SubmitHandler<IArticleCreate> = async (data) => {
         await mutateAsync(data)

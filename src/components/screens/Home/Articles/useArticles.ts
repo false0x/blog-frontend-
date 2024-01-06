@@ -1,11 +1,18 @@
-import { useQuery } from 'react-query'
 import { ArticlesService } from '@/src/services/articles/articles.service'
+import { useQuery } from 'react-query'
 
-export const useArticles = () => {
-    const { isLoading, data, refetch } = useQuery(
-        'get all articles',
-        () => ArticlesService.getAll()
-    )
-
-    return { isLoading, data: data?.data, refetch }
+interface UseArticlesOptions {
+    page?: number;
 }
+
+
+export const useArticles = (options: UseArticlesOptions = {}) => {
+    const { page = 1 } = options;
+
+    const { isLoading, data, refetch } = useQuery(
+        ['get all articles', page],
+        () => ArticlesService.getAll(page)
+    );
+
+    return { isLoading, data: data?.data, refetch };
+};

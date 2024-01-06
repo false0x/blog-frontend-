@@ -4,7 +4,7 @@
 }
 
 .root__articles {
-  @apply font-roboto pt-10 font-normal;
+  @apply font-roboto pt-10 font-normal flex flex-col gap-8;
 }
 
 .root__article {

@@ -26,3 +26,14 @@ export interface IArticleCreate {
 export interface IArticleUpdate {
     title: string
 }
+
+export interface IArticleResponse {
+    articles: IArticle[]
+    pageInfo: PageInfo
+}
+
+interface PageInfo {
+    currentPage: number
+    totalPages: number
+    remainingPages: number
+}

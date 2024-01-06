@@ -1,14 +1,16 @@
 import { axiosAuth, axiosClassic } from '@/src/api/api.interceptor'
 import { getArticleUrl } from '@/src/config/api.config'
-import { IArticle, IArticleCreate } from '@/src/services/articles/articles.interface'
+import { IArticle, IArticleCreate, IArticleResponse } from '@/src/services/articles/articles.interface'
 
 export const ArticlesService = {
     async get(id: number) {
         return axiosClassic.get<IArticle>(getArticleUrl(`/${id}`))
     },
 
-    async getAll() {
-        return axiosClassic.get<IArticle[]>(getArticleUrl())
+    async getAll(page?: number) {
+        const params = page ? { page } : {};
+
+        return axiosClassic.get<IArticleResponse>(getArticleUrl(), { params });
     },
 
     async create(data: IArticleCreate) {
