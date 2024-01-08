@@ -6,7 +6,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/v1/:path*',
+        source: '/server/:path*',
         destination: `https://apis.na4u.ru/api/:path*`
       }
     ]
