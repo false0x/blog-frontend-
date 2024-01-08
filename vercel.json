@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/server/:path*",
+      "destination": "https://apis.na4u.ru/api/:path*"
+    }
+  ]
+}
